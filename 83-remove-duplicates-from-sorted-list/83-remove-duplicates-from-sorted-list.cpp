@@ -19,8 +19,12 @@ public:
         if(temp->val == temp->next->val){
             temp->next = temp->next->next; // detach
             
+            //dont iterate here
+            //let it enter the loop again and check
+            //if equal <detach link again>
+            //if not go to else and iterate
         }else{
-            temp = temp->next; 
+            temp = temp->next; // iterate onlly when not equal
         }
              
         
