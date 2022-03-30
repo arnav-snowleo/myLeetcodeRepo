@@ -16,8 +16,6 @@ public:
             return head;
         }
         
-        ListNode* answer = nullptr;        
-        
         ListNode* slow = head;
         ListNode* slow2 = head;
         ListNode* fast = head;
@@ -36,7 +34,7 @@ public:
             }
         }
         
-        return answer;
+        return nullptr;
         
     }
 };
