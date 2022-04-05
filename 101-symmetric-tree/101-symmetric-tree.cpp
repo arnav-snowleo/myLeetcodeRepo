@@ -19,15 +19,14 @@ public:
     
     bool isSymmetricHelper(TreeNode* root1, TreeNode* root2){
         
-        //BASE CASES
+        //BASE CASE
         if(!root1 || !root2) return root1 == root2;
-        if(root1->val != root2->val) return false;
         
         //preorder traversal simultaneously
         bool  l = isSymmetricHelper(root1->left , root2->right);
         bool  r = isSymmetricHelper(root1->right , root2->left);       
         
         //JOIN
-        return l && r;
+        return (root1->val == root2->val) && l && r;
     }
 };
