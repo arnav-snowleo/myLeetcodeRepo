@@ -11,18 +11,20 @@
  */
 class Solution {
 public:
+    // TRY TO IMPROVE SOLUTION
     bool checker(TreeNode* root, int x){
         
         if(!root) return true;
+        if(root->val != x) return false;
         
         bool leftCheck = checker(root->left , x);
         bool rightCheck = checker(root->right , x);
         
-        return (root->val == x) && leftCheck && rightCheck;
+        return leftCheck && rightCheck;
         
     }
     
     bool isUnivalTree(TreeNode* root) {       
         return checker(root,root->val);
     }
-}; 
+};  
