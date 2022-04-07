@@ -14,13 +14,15 @@ public:
         
     void helper(TreeNode* node){
         
-        TreeNode* temp = new TreeNode();
-        
         if(!node) return;
         
-        temp = node->left;
-        node->left = node->right;
-        node->right = temp;   
+        // TreeNode* temp = new TreeNode();
+        // temp = node->left;
+        // node->left = node->right;
+        // node->right = temp; 
+
+        
+        swap(node->left , node->right);
         
         // RECURSION
         if(node->left) helper(node->left);
