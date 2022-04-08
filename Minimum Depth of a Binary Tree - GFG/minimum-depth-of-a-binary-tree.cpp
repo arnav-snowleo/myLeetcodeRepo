@@ -102,6 +102,8 @@ class Solution{
         int l = minDepth(root->left);
         int r = minDepth(root->right);
         
+        
+        // IF ONE SIDE OF THE TREE IS EMPTY SUBTREE
         if(l == 0 && r!=0){
             l = r;
         }
