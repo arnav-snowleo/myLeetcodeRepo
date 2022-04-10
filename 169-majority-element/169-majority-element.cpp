@@ -5,9 +5,9 @@ public:
         int ceilVal = ceil(nums.size()/2);        
         int ans = 0;        
         
-        // map<int, int> mp;
+        map<int, int> mp;
         
-        unordered_map<int,int> mp; // use an unordered_map for better T(0)
+        // unordered_map<int,int> mp; 
         
         for (int i =0;i<nums.size();i++){
             mp[nums[i]]++;      
