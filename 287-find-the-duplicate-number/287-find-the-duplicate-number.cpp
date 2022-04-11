@@ -1,25 +1,42 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
+          
+        // other solution using maps is working fine, but is of high T(0)
         
+        set<int> st;
         
-        map<int,int> mp;
-        
-        
-        for(int i=0;i<nums.size();i++){
+        for (auto it: nums){
             
-            mp[nums[i]]++;
+            if(st.count(it))
+                return it;
+            st.insert(it);
         }
         
-        int dup = 0;
-        for(auto it: mp){
-            
-            if(it.second > 1) {
-                dup = it.first;
-                break;
-            }
-        }
+        return -1;
         
-        return dup;
+        // space -> O(n)
+        
+        // solution using set sum method is wrong for test case [2,2,2,2,2] as elements can be repeated
+        
+//         int sum = 0;
+        
+//         for(int i=0;i<nums.size();i++){
+//             sum += nums[i];
+//         }
+        
+        
+//         set<int> st;
+//         int setSum  = 0;
+//         for(int i=0;i<nums.size();i++){
+//             st.insert(nums[i]);
+//         }
+        
+//         for(auto it: st){
+//             setSum += it;
+//         }
+        
+//         return sum - setSum;
+
     }
 };
