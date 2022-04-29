@@ -30,6 +30,7 @@ public:
                 
                 if( abs(i- mp[nums[i]] ) <= k ){
                     ans = true;
+                    break;
                 }
             }
             
