@@ -2,7 +2,7 @@ class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
         
-        bool ans = false;
+        // bool ans = false;
         
 //         for(int i=0;i<nums.size()-1;i++){
             
@@ -29,7 +29,7 @@ public:
                 //go for checking 
                 
                 if( abs(i- mp[nums[i]] ) <= k ){
-                    ans = true;
+                    return true;
                     break;
                 }
             }
@@ -41,6 +41,6 @@ public:
             
         }
         
-        return ans;
+        return false;
     }
 };
