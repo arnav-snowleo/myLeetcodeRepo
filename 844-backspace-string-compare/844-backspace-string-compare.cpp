@@ -2,16 +2,18 @@ class Solution {
 public:
     bool backspaceCompare(string s, string t) {
         
+        // 1. if # is the first char of string
+        // 2. backspacing an empty text, the text will continue empty.
+        // 3. if after putting chars in stack,, both stack size different, different strings
+        
         stack<char> st1;
         stack<char> st2;
         
         for(int i =0;i<s.length();i++){
             
-            if(s[i] == '#' ) { 
+            if(s[i] == '#' ) {        
                 
-                if(!st1.empty()){
-                    st1.pop();
-                }
+                if(!st1.empty())  st1.pop();                
             }
             else {st1.push(s[i]);}
         }
@@ -20,14 +22,12 @@ public:
             
             if(t[j] == '#') {
                 
-                if(!st2.empty()){
-                st2.pop();
-                }
+                if(!st2.empty())  st2.pop();                
             }
             else{st2.push(t[j]);   }        
         }
         
-        if(st1.size() != st2.size()) {cout<<"no";return false;}
+        if(st1.size() != st2.size()) {return false;}
         if(st1.size() == st2.size()){
             
             if(st1.empty() && st2.empty()) {return true;}
