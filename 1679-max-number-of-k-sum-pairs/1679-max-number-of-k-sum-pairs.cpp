@@ -2,24 +2,47 @@ class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) { 
         
-       // Using map for O(n) solution
+        //Using Two pinters for O(n) solution
         
-       int count = 0; 
-       int n = nums.size();        
-       if(n ==1) return 0;
+        sort(nums.begin() , nums.end());
         
-       unordered_map<int,int> mp;
-       for(int i=0;i<n;i++){
+        int i=0 , j= nums.size()-1;
+        int count = 0;
+        
+        while(i<j){
+            
+            if(nums[i] + nums[j] == k){
+                count++;
+                i++;
+                j--;
+            }
+            else if(nums[i] + nums[j] < k){
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return count;
+        
+//        // Using map for O(n) solution
+        
+//        int count = 0; 
+//        int n = nums.size();        
+//        if(n ==1) return 0;
+        
+//        unordered_map<int,int> mp;
+//        for(int i=0;i<n;i++){
            
-           if( mp[k-nums[i]] ){
-               count++;
+//            if( mp[k-nums[i]] ){
+//                count++;
                
-               mp[k-nums[i]]--; //remove
-               mp[nums[i]]--;   //remove
-           }
-           mp[nums[i]]++;
-       }
-       return count;
+//                mp[k-nums[i]]--; //remove
+//                mp[nums[i]]--;   //remove
+//            }
+//            mp[nums[i]]++;
+//        }
+//        return count;
         
    
         // TLE for O(n*n)
