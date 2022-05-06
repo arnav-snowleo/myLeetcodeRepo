@@ -15,7 +15,7 @@ public:
                 count++;
                 maxi = max(maxi, count);
             }else if(nums[i] == nums[i+1]){
-                
+                // do nothing
             }
             else{
                 //reset count
@@ -23,7 +23,7 @@ public:
             }
         }
         
-        if(maxi== INT_MIN) return count+1;
+        if(maxi== INT_MIN) return count+1; // if no consecutive found, maxi not updated
         return maxi+1;
         
     }
