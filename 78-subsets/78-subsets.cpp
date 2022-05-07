@@ -1,35 +1,42 @@
 class Solution {
+private:
+    void allsubsets(int index , int size,vector<int>& nums, vector<int>& ds , vector<vector<int>>& ans){
+        
+        //RECURSIVE Method         
+        //either take an or not take 
+        
+        // TAKE       
+        
+        // put in data_str
+        // recur fnxn call
+        // come back remove from data_str         
+        
+        
+        // NOT TAKE
+        
+        //recur fnxn call 
+       
+        if(index == size){
+            ans.push_back(ds);
+            return;                               //was missing this "return", so address sanitizer
+        }     
+        
+        ds.push_back(nums[index]);                        // take
+        allsubsets(index+1, size,nums , ds , ans);        // call recursive fnxn
+        ds.pop_back();                                    // remove ele while coming back
+                         
+        allsubsets(index+1, size,nums, ds , ans);         // not take and call recur fnxn               
+    }
+    
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
         
-        //POWER SET METHOD
+        int n = nums.size();       
+        vector<int> ds;        
+        vector<vector<int>> ans;
         
-        //outer loop from o to 2power n -1
+        allsubsets(0, n, nums, ds , ans);
         
-        //inner loop from 0 to size of vector
-        
-        //inner loop checks if bit is set in ith index, 
-        //if bit is set in ith index, corresponding elemnt from vector is added to ans vector
-        
-        
-        vector<vector<int>> ans;       
-        int y = nums.size();
-        int x = (int) pow(2,y) ;
-        
-        for(int i=0;i<x;i++){
-            vector<int> arr;
-            
-            for(int j =0;j<y;j++){                
-                
-                //check if bit set
-                // number from 0 to (2power n)-1 bitwise and & with (1<<j)
-                if((i & (1<<j)) != 0){
-                    arr.push_back(nums[j]);                    
-                }                
-            }            
-            ans.push_back(arr);      
-            
-        }
         return ans;
     }
 };
