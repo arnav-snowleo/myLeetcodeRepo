@@ -1,15 +1,24 @@
 class Solution {
 private:
-    int recursiveFib(int n){
-        if (n == 0 || n==1) return n;
+    int recursiveFib(int n, vector<int> &dp){
+        if(n<= 1) return n;
         
-        return recursiveFib(n-1) + recursiveFib(n-2);
+        //STEP 2. check if val updated in dp vector, else retuurn -1
+        if(dp[n] != -1) return dp[n];
+        
+        
+        //STEP 3.   store in dp[n] 
+        return dp[n] = recursiveFib(n-1 , dp) + recursiveFib(n-2, dp);
     }
 public:
     int fib(int n) {
         
-        //RECURSIVE SOLUTION
-        return recursiveFib(n);
+        //DP SOLUTION USING MEMOIZATION
+        //STEP 1. INITIALIZATION
+        vector<int> dp(n+1,-1);
+        
+        
+        return recursiveFib(n , dp);
         
     }
 };
