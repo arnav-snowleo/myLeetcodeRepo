@@ -1,24 +1,19 @@
 class Solution {
-private:
-    int recursiveFib(int n, vector<int> &dp){
-        if(n<= 1) return n;
-        
-        //STEP 2. check if val updated in dp vector, else retuurn -1
-        if(dp[n] != -1) return dp[n];
-        
-        
-        //STEP 3.   store in dp[n] 
-        return dp[n] = recursiveFib(n-1 , dp) + recursiveFib(n-2, dp);
-    }
 public:
     int fib(int n) {
         
-        //DP SOLUTION USING MEMOIZATION
-        //STEP 1. INITIALIZATION
-        vector<int> dp(n+1,-1);
+        // DP -> TABULATION APPROACH : bottom up
+       
+        if(n<2) return n;        
+        int dp[n+1];       
         
-        
-        return recursiveFib(n , dp);
+        dp[0]=0;
+        dp[1]=1;
+        for(int i=2;i<=n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }       
+    
+        return dp[n];
         
     }
 };
