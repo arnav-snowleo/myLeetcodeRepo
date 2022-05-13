@@ -1,36 +1,32 @@
 class Solution {
 private:
-    int fun(int n , vector<int> &dp){
-        if(n <2) return 1;
+//     int fun(int n , vector<int> &dp){
+//         if(n <2) return 1;
         
-        //MEMOIZE : STEP 2
-        if(dp[n] != -1) return dp[n];
+//         //MEMOIZE : STEP 2
+//         if(dp[n] != -1) return dp[n];
         
-        int l = fun(n-1 , dp);
-        int r = fun(n-2 , dp);
+//         int l = fun(n-1 , dp);
+//         int r = fun(n-2 , dp);
         
-        //MEMOIZE : STEP 3. store while returning
-        return dp[n] = l+r;
+//         //MEMOIZE : STEP 3. store while returning
+//         return dp[n] = l+r;
         
-    }
+//     }
 public:
     int climbStairs(int n) {
         
-        // NUM of distinct ways -> DP problem
+        //TABULATION SOLUTION
+        int dp[n+1];
         
+        dp[0] = 1;
+        dp[1] = 1;
         
-        // 3 steps
-        // step 1: write index
-        // step 2: do all possible stuff on that index
-        // step 3: sum all possible
+        for(int i = 2;i<=n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
         
-        //RECURSIVE SOLN, GIVES TLE
-        
-        // memoize it
-        // MEMOIZE : STEP 1;
-        vector<int> dp(n+1 , -1);
-        
-        return fun(n , dp);
+        return dp[n];
         
     }
 };
