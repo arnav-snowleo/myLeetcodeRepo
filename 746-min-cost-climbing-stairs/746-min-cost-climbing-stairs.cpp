@@ -12,38 +12,23 @@ private:
             
             jump2step = fun(index+2, cost , dp) + cost[index];
         }        
-        
+
         return dp[index] = min(jump1step, jump2step);
     }
 public:
     int minCostClimbingStairs(vector<int>& cost) {            
 
         vector<int> dp(cost.size()+1,-1);
-        int a = fun(0 , cost , dp);
-        int b = fun(1, cost , dp);        
-        
-        // cout<<"a"<<a<<" "<<"b"<<b;
+        int a = fun(0 , cost , dp);          // can start from index 0
+        int b = fun(1, cost , dp);           // can start from index 1
+
         return min(a,b);
         
     }
 };
 
 
-// [1,100,1,1,1,100,1,1,100,1] size = 10
-
-// 1  
-// 1
-    
-// 1
-    
-
-
-
-
-
-
-
-// WE HAVE TO CHECK ALL POSSIBLE WAYS TO REACH TOP OF FLOOR -> RECURSION
+// WE HAVE TO CHECK ALL POSSIBLE WAYS TO REACH TOP OF FLOOR -> RECURSION identified
         
-// return minimum cost
+// return minimum cost 
 // all ways, minm keywords -> DP qs identified
