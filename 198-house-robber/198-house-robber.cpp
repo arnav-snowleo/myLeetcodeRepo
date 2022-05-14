@@ -1,34 +1,28 @@
 // MAXIMUM SUM OF NON-ADJACENT ELEMENTS
 
 // TRY OUT ALL POSSIBLE WAYS -- recursion
-// overlapping subproblems found -- (DP problem) -can memoize
+// overlapping subproblems found -- (DP problem) - can memoize
+//                                               - tabulation -> (index-1 , index-2) present --space optimize
 
 class Solution {
-private:
-    int fun(int index, vector<int> &nums, vector<int> &dp){
-        
-        // if I am at index = 0, then index 1 is not picked // draw recur tree to visualze
-        if(index == 0) return nums[index];
-        if(index < 0) return 0;
-        
-        if(dp[index] != -1) return dp[index];
-        
-        int pick = nums[index] + fun(index-2 , nums , dp);
-        int not_pick = 0 + fun(index-1 , nums, dp);
-        
-        return dp[index] = max(pick, not_pick);     
-        
-    }
 public:
     int rob(vector<int>& nums) {
         
-        // MEMOIZE is top-down
+        // TABULATION APPROACH - bottom up
        
         int n = nums.size();
-        vector<int> dp(n+1 , -1);
+        int dp[n+1];        
+        dp[0] = nums[0];       
         
-        return fun(n-1 , nums , dp);        
+        for(int i=1;i<n;i++){
+            
+            int pick = nums[i] ;            
+            if(i>1) pick += dp[i-2];
+            int not_pick = 0+ dp[i-1];
+            
+            dp[i] = max(pick, not_pick);
+        }
+        
+        return dp[n-1];        
     }
 };
-
-
