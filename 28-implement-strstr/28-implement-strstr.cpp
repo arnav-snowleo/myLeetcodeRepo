@@ -1,16 +1,24 @@
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
+    int strStr(string haystack, string needle) {   
         
-        // if(needle.length()==0) return 0;
+        int h = haystack.length();
+        int n = needle.length();
         
-        int found = haystack.find(needle);
-        
-        if(found != -1) return found;
-        return -1;
-
-        
-        
-        
+        for(int i=0;i<h;i++){
+            
+            int j = 0 ;
+            for( ; j<n && (i+j) < h;j++){
+                
+                if(haystack[i+j] == needle[j])
+                     continue;
+                break;
+                
+            }
+            if(j == n){
+                return i;
+            }            
+        }        
+        return -1;        
     }
 };
