@@ -1,21 +1,20 @@
+// BIT MANIPULATION
+
+// [3,0,1] ->missing is 2    
+
+// [0,1,3] -> given array
+// [1,2,3] -> xorwith      (start from 1 to size inclusive)
+
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         
-        int n = nums.size();
-        
-        sort(nums.begin() , nums.end());
-        
-        if(nums[n-1] != n) return n;
-        for(int i=0;i<n;i++){
+        int res = 0;
+        for(int i=0;i<nums.size();i++){
             
-            if ( nums[i] != i){
-                return i;
-                break;
-            }
-        }
-        
-        return -1;
-        
+            res ^= nums[i];
+            res ^= (i+1);
+        }        
+        return res;        
     }
 };
