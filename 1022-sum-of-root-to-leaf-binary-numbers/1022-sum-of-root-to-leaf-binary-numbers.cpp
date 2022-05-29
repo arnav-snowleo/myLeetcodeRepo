@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    vector<string> arr;
+    int sum =0;
     
     void helper(TreeNode* root, string str){       
         
         str += to_string(root->val);
-        if(!root->left && !root->right) arr.push_back(str);
+        if(!root->left && !root->right) sum += stoi(str, 0, 2);        
         
         if(root->left) helper(root->left , str );
         if(root->right) helper(root->right , str );
@@ -28,11 +28,6 @@ public:
     int sumRootToLeaf(TreeNode* root) {
         
         helper(root , "");
-        
-        int sum=0;
-        for(int i=0; i<arr.size();i++){
-            sum += stoi(arr[i], 0, 2);
-        }
         return sum;
     }
 };
