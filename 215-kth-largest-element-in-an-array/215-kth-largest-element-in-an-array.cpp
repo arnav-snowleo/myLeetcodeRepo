@@ -1,3 +1,5 @@
+// MAX HEAP
+
 // O(nlogn) solution
 
 class Solution {
@@ -6,17 +8,16 @@ public:
         
         priority_queue<int> max_heap;        
         
-        for(int i=0;i<nums.size();i++){   // O(n)
-            max_heap.push(nums[i]);       // O(logn)
+        for(auto it: nums){      // O(n)            
+            max_heap.push(it);   // O(logn)            
         }
         
-        int ans = 0;        
+        k--;     //say, we want 2nd largest, if we don't use this line, we already pop 2 times
+                 //so , we get 3rd largest instead
         while(k--){
-            ans = max_heap.top();
-            max_heap.pop();
+            max_heap.pop();       
         }
-        return ans;
-        
+        return max_heap.top();        
     }
 };
 
