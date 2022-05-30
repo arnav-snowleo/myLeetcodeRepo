@@ -1,23 +1,16 @@
-// MAX HEAP
-
-// O(nlogn) solution
+// MIN HEAP
 
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
         
-        priority_queue<int> max_heap;        
+        priority_queue<int , vector<int> , greater<int>> min_heap;        
         
-        for(auto it: nums){      // O(n)            
-            max_heap.push(it);   // O(logn)            
+        for(auto it: nums){                           // O(n)            
+            min_heap.push(it);                        // O(logn)   
+            if(min_heap.size() > k) min_heap.pop();    // O(logn)
         }
-        
-        k--;     //say, we want 2nd largest, if we don't use this line, we already pop 2 times
-                 //so , we get 3rd largest instead
-        while(k--){
-            max_heap.pop();       
-        }
-        return max_heap.top();        
+        return min_heap.top();       
     }
 };
 
