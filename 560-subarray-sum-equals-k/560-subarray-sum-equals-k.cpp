@@ -1,5 +1,6 @@
 // PREFIX sum, HASHMAP
 // sum is key in map
+// sum occurence is value in map
 
 class Solution {
 public:
