@@ -2,7 +2,9 @@
 // SORTS THE TREE VAL IN ASCENDING ORDER
 
 // TC: O(n) for recur traversal 
-// SC: O(n) for storage vector
+// SPACE OPTIMIZED APPROACH-> keep a counter decrement it everytime
+// SC: O(1) 
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -16,20 +18,23 @@
  */
 class Solution {
 private:
-    void inorder(TreeNode* root ,vector<int> &nums){
+    void inorder(TreeNode* root , int &k){   // notice &k here
 
-        if(!root ) return ;
+        if(!root ) return ;       
 
-        inorder(root->left,nums);
-        nums.push_back(root->val);
-        inorder(root->right,nums);        
+        inorder(root->left,k);
+        
+        k --;
+        
+        if(k==0) ans = root->val;
+
+        inorder(root->right,k);        
     }
 public:
+    int ans = 0;
     int kthSmallest(TreeNode* root, int k) {
-        
-        vector<int> nums;
-        inorder(root,nums);
-        return nums[k-1];        
+        inorder(root,k); 
+        return ans;       
     }
 };
 
