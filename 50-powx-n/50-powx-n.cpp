@@ -13,8 +13,9 @@ private:
 public:
     double myPow(double x, int n) {
         
+        
         // n can be large negative , can cause overflow, so take long long
-        long long int z = abs(n);
+        long long int z = abs(n);                        // taking int only , gives Runtime error
         double ans = 1.0 ;
         ans = helper(x,z);
         
