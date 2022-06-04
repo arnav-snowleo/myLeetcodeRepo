@@ -1,4 +1,5 @@
 // SPACE OPTIMIZED: WITHOUT USING EXTRA SPACE
+// TC: O((n+m)logn) + O(n)
 
 class Solution {
 public:
@@ -6,10 +7,10 @@ public:
 
         if(m==0 && n!=0)  nums1 = nums2;   
         
-        for(int i=0;i<n;i++){
-            nums1[m+i] = nums2[i];
+        for(int i=0;i<n;i++){                 // O(n)
+            nums1[m+i] = nums2[i]; 
         }
-        sort(nums1.begin() , nums1.end());       
+        sort(nums1.begin() , nums1.end());    // O((n+m)logn) 
     }
 };
-
+ 
