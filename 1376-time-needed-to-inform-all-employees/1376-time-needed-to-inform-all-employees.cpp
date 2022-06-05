@@ -17,9 +17,7 @@ public:
         vector<vector<int>> adj(n);
         
         for(int i=0; i<n; i++){
-            if(manager[i] != -1){
-                adj[manager[i]].push_back(i);
-            }
+            if(i != headID)  adj[manager[i]].push_back(i);
         }
         return dfs( headID ,adj,informTime);  //start DFS from headID
     }
