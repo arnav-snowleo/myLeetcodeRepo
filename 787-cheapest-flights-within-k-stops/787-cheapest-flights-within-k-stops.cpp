@@ -12,7 +12,7 @@ public:
         priority_queue< tuple<long long,int,int>, vector<tuple<long long,int,int>> , greater<tuple<long long,int,int>> > pq; //minheap
         pq.push(make_tuple(0,src,0));                                             // cost, src node, number of stops
         
-        vector<long long> dist(n+1, 1000);  ////// to avoid TLE ~~~~~~~~~~~~~~
+        vector<long long> dist(n+1, INT_MAX);  ////// to avoid TLE ~~~~~~~~~~~~~~
         
         while(!pq.empty()){
             
