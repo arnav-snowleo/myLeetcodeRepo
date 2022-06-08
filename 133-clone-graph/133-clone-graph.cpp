@@ -1,4 +1,6 @@
-//USING BFS
+// USING BFS
+// use unordered_map<Node*, Node*> mp;
+
 
 /*
 // Definition for a Node.
@@ -29,7 +31,7 @@ public:
         
         if(!node) return NULL;
         
-        Node* temp = new Node(node->val, {});
+        Node* temp = new Node(node->val);
         mp[node] = temp;
         
         queue<Node*> q;       
@@ -43,7 +45,7 @@ public:
             for(auto adj : curr->neighbors){
                 
                 if(mp.find(adj) == mp.end()){            // node not present in the map
-                    mp[adj] = new Node(adj->val ,{});    // add to map
+                    mp[adj] = new Node(adj->val);        // add to map
                     q.push(adj);                         // push to queue
                 }
                 mp[curr]->neighbors.push_back(mp[adj]);                
