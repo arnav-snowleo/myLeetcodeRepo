@@ -12,7 +12,7 @@ public:
         priority_queue< tuple<long long,int,int>, vector<tuple<long long,int,int>> , greater<tuple<long long,int,int>> > pq; //minheap
         pq.push(make_tuple(0,src,0));                                             // cost, src node, number of stops
         
-        vector<long long> dist(n+1, INT_MAX);  ////// to avoid TLE ~~~~~~~~~~~~~
+        vector<long long> dist(n+1, 1e5);  ////// to avoid TLE ~~~~~~~~~~~~~~
         
         while(!pq.empty()){
             
@@ -22,8 +22,8 @@ public:
             if(node == dst) return cost;
             if(stops > k) continue;
             
-            if(stops > dist[node]) continue;   ////// to avoid TLE  ~~~~~~~~~~
-            dist[node] =  stops;               ////// to avoid TLE  ~~~~~~~~~~
+            if(stops > dist[node]) continue;   ////// to avoid TLE  ~~~~~~~~~~~~~~
+            dist[node] =  stops;               ////// to avoid TLE  ~~~~~~~~~~~~~~
             
             for(auto child : graph[node]){
                 auto [nextNode, nextNodeCost] = child;
