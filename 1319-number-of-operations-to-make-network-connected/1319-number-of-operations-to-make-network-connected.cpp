@@ -1,6 +1,11 @@
 //  (number of components - 1)  =  min num of operations
 
 
+// build graph
+// visited array
+// if not visited, component_count++, do DFS
+
+
 class Solution {
 private:
     void dfs(int node, vector<int> graph[] , vector<int> &vis){
@@ -37,9 +42,6 @@ public:
                 dfs(i, graph, vis);
             }
         }
-        return component -1;
-        
-        
-        
+        return component -1;        
     }
 };
