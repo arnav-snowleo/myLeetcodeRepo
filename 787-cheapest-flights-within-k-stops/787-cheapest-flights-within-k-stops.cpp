@@ -4,7 +4,7 @@ class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
         
-        vector<pair<int,int>> graph[n+1];            // pair holds - nextNode, cost_to_next_node
+        vector<pair<int,int>> graph[n];            // pair holds - nextNode, cost_to_next_node
         for(auto it: flights){
             graph[it[0]].push_back({it[1],it[2]});   // src node , { destination node, cost }
         }
