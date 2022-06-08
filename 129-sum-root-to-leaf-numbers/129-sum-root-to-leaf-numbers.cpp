@@ -13,38 +13,27 @@
 
 // BRUTE using, vector to store. and then iterate, then sum up and return
 
+// OPTIMIZED, removed vector to store, convert on the fly, and sum up
 class Solution {
 public:
-    // int sum =0;
-    void insertNumbers(TreeNode* node, vector<string> &arr, string str){
+    int sum =0;
+    void insertNumbers(TreeNode* node, string str){
         
         if(node == NULL) return;
-        str += to_string(node->val);
         
         if(node->left == NULL && node->right == NULL ) {
-            // str += to_string(node->val);
-            // int num = stoi(str);
-            // sum += num;
-            arr.push_back(str);
+            str += to_string(node->val);
+            int num = stoi(str);
+            sum += num;
         }      
         
-        insertNumbers(node->left, arr , str);
-        insertNumbers(node->right, arr, str);   
-        
-        str.pop_back();        
+        insertNumbers(node->left , str +to_string(node->val));
+        insertNumbers(node->right, str +to_string(node->val));        
     }
 public:
     int sumNumbers(TreeNode* root) {
-        
-        // if(root && !root->left && root->right) return root->val; // this was causing issue
-        
-        vector<string> array;
-        insertNumbers(root ,array, "");
 
-        int sum =0;
-        for(auto it: array){
-            sum += stoi(it);
-        }
+        insertNumbers(root, "");
         return sum;
     }
 };
