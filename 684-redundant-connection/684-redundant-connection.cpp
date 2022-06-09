@@ -1,6 +1,5 @@
 // FIND PARENT
 
-
 class Solution {
 public:
     vector<int> parent;
@@ -15,7 +14,7 @@ public:
         int n = edges.size();
         parent.resize(n+1, 0);
         
-        for(int i=0;i<n;i++) parent[i] = i;        
+        for(int i=0;i<n;i++) parent[i] = i;        //assign each node as parent of self
         
         for(int i=0;i<n;i++){
             
@@ -23,7 +22,7 @@ public:
             int v = findParent(edges[i][1]);
             
             if(u != v){
-                parent[v] = u;
+                parent[u] = v;
             }else{
                 return {edges[i][0] , edges[i][1]};
             }
