@@ -2,9 +2,11 @@
 //0-  water
 //2- already visited land
 
-// wherever i cannot go from particular land cell, i increment the counter
+// whenever i cannot go from particular land cell, increment the counter
+// maybe because for boundary hinderance, or water hinderance
+// do nothing if already visited  
 
-// say , I am at grid[1][1] ->can go everywhere, so don't increase counter at all
+// but ,if I am at grid[1][1] ->can go everywhere, so don't increase counter at all
 
 class Solution {
 public:
@@ -25,7 +27,7 @@ public:
         dfs(i,j-1,row, col, grid);
            
     }
-public:
+    
     int islandPerimeter(vector<vector<int>>& grid) {
         int m = grid.size();
         int n = grid[0].size();
@@ -35,7 +37,10 @@ public:
             
             for(int j=0;j<n;j++){
                 
-                if(grid[i][j]==1) dfs(i,j,m,n,grid);
+                if(grid[i][j]==1) {
+                    dfs(i,j,m,n,grid);
+                    break;
+                }
             }
         }
         
