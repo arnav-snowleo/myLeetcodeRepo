@@ -15,7 +15,7 @@ private:
         
         if(i<0 || j<0 || i>=row || j>=col || grid2[i][j]==0 ) return ;
         
-        if(grid1[i][j] == 1 && grid2[i][j] == 1){
+        if(grid1[i][j] == grid2[i][j] == 1){
             grid1[i][j] = 0;
             grid2[i][j] = 0;
         }
