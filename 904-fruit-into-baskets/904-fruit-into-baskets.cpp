@@ -11,8 +11,10 @@ public:
         
         while(j<n){
             
+            // step1.
             mp[fruits[j]]++;
             
+            // step2.
             while(mp.size()>2){
                 //left pointer
                 mp[fruits[i]]--;                           //decrement
@@ -20,6 +22,7 @@ public:
                 i++;                                       //slide left ptr
             }
             
+            // step3.
             maxi= max(maxi, j-i+1); //max size of window is what we need                
             j++; 
         }
