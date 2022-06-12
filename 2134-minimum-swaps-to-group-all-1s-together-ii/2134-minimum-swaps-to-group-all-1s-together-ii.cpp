@@ -33,6 +33,7 @@ public:
             j++;                     //right pointer slides everytime
         } 
         
+        // this check for test case [0,0,0]
         return mini == INT_MAX ? 0 : mini;
     }
 };
