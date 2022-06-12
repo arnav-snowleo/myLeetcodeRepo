@@ -4,11 +4,8 @@
 class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
-        
-        int n = fruits.size();
-        
-        int maxi = INT_MIN;
-        int i=0,j=0,types=0,sum=0;
+
+        int i=0,j=0,types=0,sum=0, maxi = INT_MIN, n = fruits.size();
 
         unordered_map<int,int> mp;
         
@@ -26,6 +23,6 @@ public:
             maxi= max(maxi, j-i+1); //max size of window is what we need                
             j++; 
         }
-        return maxi == INT_MIN ? (mp.size() > 0 ? n : 0)  : maxi;       
+        return maxi == INT_MIN ? 0 : maxi;       
     }
 };
