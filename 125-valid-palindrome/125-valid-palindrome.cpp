@@ -18,12 +18,12 @@ public:
             if(s[i]>= 'A' && s[i] <= 'Z') {
                 temp += s[i] +32 ;            //add 32 for ASCII or use tolower()
             }
-            // if(s[i] >= 'a' && s[i] <=  'z' || s[i]>=48 && s[i]<=57) {
-            //     temp += s[i];
-            // }
-            if(s[i] >= 'a' && s[i] <=  'z' || s[i] - '0'>=0 && s[i]-'0'<=9) {
+            if(s[i] >= 'a' && s[i] <=  'z' || s[i]>=48 && s[i]<=57) {
                 temp += s[i];
-            }            
+            }
+            // if(s[i] >= 'a' && s[i] <=  'z' || s[i] - '0'>=0 && s[i]-'0'<=9) {
+            //     temp += s[i];
+            // }            
         }
 
         return isStringPalindrome(temp);        
