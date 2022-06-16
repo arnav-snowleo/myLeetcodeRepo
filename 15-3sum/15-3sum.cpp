@@ -1,7 +1,7 @@
-// using 3 pointers //sorting
+// using 3 pointers //sorting //set
 // i pointer, sort and use left pointer, right pointer
 
-// solution set must not contain duplicate triplets. // USE SET logn time for insertion
+// no duplicate triplets. // USE SET O(logn) time for insertion
     
 class Solution {
 public:
