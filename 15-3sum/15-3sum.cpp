@@ -4,12 +4,15 @@
 // no duplicate triplets. // skip the repeating elements
 // USEd SET for removing duplicates: O(logn) time for insertion
     
+
+//OPTIMIZED APPROACH : O(nlogn) <sorting> + O(n^2) <for, while>
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         
         int n=nums.size();        
-        sort(nums.begin(), nums.end());        
+        sort(nums.begin(), nums.end());      //O(nlogn)  
         vector<vector<int>> ans;
         if(n < 3)  return ans;
         
@@ -20,13 +23,14 @@ public:
                 
                 int j = i+1,k=n-1;
                 int rem_sum = -nums[i];
+                
                 while(j<k){
                     if(nums[j] + nums[k] == rem_sum ){       
                         ans.push_back({nums[i], nums[j], nums[k]});
                                                 
                         //THESE TWO WHILE LOOPS ENUSRE DUPLICATES ARE SKIPPED
-                        while(j<k && nums[j]==nums[j+1]){j++;}
-                        while(j<k && nums[k]==nums[k-1]){k--;}
+                        while(j<k && nums[j]==nums[j+1]) j++;
+                        while(j<k && nums[k]==nums[k-1]) k--;
                         
                         j++;
                         k--;
