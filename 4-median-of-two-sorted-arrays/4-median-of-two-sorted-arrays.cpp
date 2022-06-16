@@ -1,11 +1,9 @@
-// USING STL, merge()  // O(nlogn) is TC of merge sort
+// BRUTE: USING STL, merge()  // O(nlogn) is TC of merge sort
 
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        
-        double ans = 0.00;
-        
+
         int len = nums1.size() + nums2.size();
         vector<int> nums3(len);
         
@@ -17,8 +15,8 @@ public:
         }else{
             
             double x = len/2;
-            return (nums3[x-1] + nums3[x]) / 2.00;            
+            return (nums3[x-1] + nums3[x]) / 2.00;  // divided by 2 instead of 2.00            
         }        
-        return ans;       
+        return 0.0;       
     }
 };
