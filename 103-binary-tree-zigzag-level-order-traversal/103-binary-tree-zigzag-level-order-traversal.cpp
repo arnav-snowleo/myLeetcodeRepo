@@ -18,18 +18,21 @@ private:
         queue<TreeNode*> q;
         q.push(root);
         
-        int count =0;
+        // int count =0;
+        bool l_to_r = false;
         while(!q.empty()){            
             
             int n = q.size();
             vector<int> level(n);
-            count++;
+            
+            l_to_r = !l_to_r;
+            
             for(int i=0;i<n;i++){
                 
                 TreeNode* node= q.front();
                 q.pop();
                 
-                int index = (count%2 != 0) ? i : (n -i-1 );
+                int index = (l_to_r) ? i : (n -i-1 );
                 level[index] = node->val;
  
                 if(node->left != NULL) q.push(node->left);
