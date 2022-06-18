@@ -32,12 +32,11 @@ private:
                 TreeNode* node= q.front();
                 q.pop();
                 
-                int index = (l_to_r) ? i : (n -i-1 );
-                level[index] = node->val;
- 
                 if(node->left != NULL) q.push(node->left);
-                if(node->right != NULL) q.push(node->right);
+                if(node->right != NULL) q.push(node->right);                
                 
+                int index = (l_to_r) ? i : (n -i-1 );
+                level[index] = node->val;                
             }
             ans.push_back(level);
         }
