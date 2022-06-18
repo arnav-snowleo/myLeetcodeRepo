@@ -18,12 +18,12 @@ private:
         queue<TreeNode*> q;
         q.push(root);
         
-        int count =1;
-        while(!q.empty()){
-            
+        int count =0;
+        while(!q.empty()){            
             
             int n = q.size();
             vector<int> level(n);
+            count++;
             for(int i=0;i<n;i++){
                 
                 TreeNode* node= q.front();
@@ -36,7 +36,6 @@ private:
                 if(node->right != NULL) q.push(node->right);
                 
             }
-            count++;
             ans.push_back(level);
         }
     }
