@@ -11,25 +11,21 @@
  */
 class Solution {
 public:
-    vector<int> ans; 
-    
-    // RECURSIVE SOLUTION
-    // SOLVE USING ITERATIVE METHOD
-     
+    vector<int> ans;      
     void preorder(TreeNode* root){
-        if(root == NULL){
-            return;
-        }
+        if(root == NULL) return;
+        
         ans.push_back(root->val);
         preorderTraversal(root->left);
         preorderTraversal(root->right);
     }
     
-    vector<int> preorderTraversal(TreeNode* root) {
-        
+    vector<int> preorderTraversal(TreeNode* root) {        
         
         preorder(root);
-        return ans;  
-        
+        return ans;          
     }
 };
+
+    // RECURSIVE SOLUTION
+    // SOLVE USING ITERATIVE METHOD
