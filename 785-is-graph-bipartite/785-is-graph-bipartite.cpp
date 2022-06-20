@@ -10,7 +10,7 @@ private:
             
             if(color[it] == -1){
 
-                color[it] = 1-color[node];     // color can be 0 or 1, 1 if we have colored in line7 
+                color[it] = !color[node];    // color can be 0 or 1, 1 if we have colored in line7 
                                               // then we color the color[it] to 0, here, this can sometime
                                               // be color[node] and color[node] is 0 in that case
                                               // andd we color[it] to 1 here .
