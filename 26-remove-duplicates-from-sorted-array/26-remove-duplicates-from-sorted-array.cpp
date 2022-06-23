@@ -13,12 +13,11 @@ public:
 
         for(int j=0;j<n;j++){
             
-            if(nums[i]==nums[j]){
-                // j++;
-            }else{
+            if(nums[i] != nums[j]){
                 i++;
                 nums[i] = nums[j];
-            }                   
+            }
+            //else j++ happens                                
         }        
         return i+1;        
     }
