@@ -1,41 +1,28 @@
-// MEMOIZED SOLUTION
+// TABULATION APPROACH
 
 class Solution {
-private:
-    int pathsCounter(int i, int j, vector<vector<int>> &dp){
-        
-        //base case
-        if(i<0 || j<0) return 0;
-        if(i==0 && j==0) return 1; 
-        
-        if(dp[i][j] != -1) return dp[i][j];
-        
-        int left = pathsCounter(i,j-1 , dp);
-        int up = pathsCounter(i-1,j , dp);        
-        
-        return dp[i][j] = left + up;       
-        
-    }
 public:
     int uniquePaths(int m, int n) {
         
-        vector<vector<int>> dp(m , vector<int>(n,-1));
+        int dp[m][n];        
         
-        return pathsCounter(m-1,n-1 , dp);
+        for(int i=0;i<m;i++){
+            
+            for(int j=0;j<n;j++){
+                
+                if(i==0 && j==0) dp[i][j] = 1;
+                
+                else{
+                    int down=0,right=0;               //initialization
+                    if(i>0) down = dp[i-1][j];
+                    if(j>0) right = dp[i][j-1];
+                    
+                    dp[i][j] = down + right;
+                }
+                
+            }
+        }
         
+        return dp[m-1][n-1];
     }
 };
-
-
-// explore all ways - recursion
-// found overlapping subproblems in recursive tree - USE DP
-
-
-//STEP 1
-// write in terms of index
-
-//STEP 2
-// do all possible stuffs on index
-
-//STEP 3
-// sum || min || max ->whatever asked in qs
