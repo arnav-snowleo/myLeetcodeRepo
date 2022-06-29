@@ -1,3 +1,52 @@
+// RECURSIVE MEMOIZED SOLUTION
+
+class Solution {
+private:
+    int helper(int index, int buy, vector<int> &prices,  vector<vector<int>> &dp){
+        
+        if(index == prices.size()) return 0;
+        
+        if(dp[index][buy] != -1) return dp[index][buy];
+        
+        int profit = 0;
+        if(buy){
+            //can buy
+            
+            int x = -prices[index] + helper(index+1, 0, prices, dp);  //buys          ,can't buy next
+            int y =                + helper(index+1, 1, prices, dp);  //does not buy  ,can buy next
+            
+            profit = max(x,y);
+            
+        }else{
+            //can sell only           
+            
+            int x = prices[index] + helper(index+1, 1, prices, dp);   //sells          ,can buy next
+            int y =               + helper(index+1, 0, prices, dp);  //does not sell  ,can't buy next 
+            
+            profit = max(x,y);
+            
+        }       
+        return dp[index][buy] = profit;
+    }
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        int size = prices.size();
+        vector<vector<int>> dp(size, vector<int>(2, -1));
+        return helper(0,1, prices , dp);        
+    }
+};
+
+
+
+
+
+
+
+
+
+// iterative solution : accepted 
+/*
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -23,3 +72,4 @@ public:
         return total_profit;
     }
 };
+*/
