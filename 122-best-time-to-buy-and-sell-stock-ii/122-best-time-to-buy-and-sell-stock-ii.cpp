@@ -15,7 +15,7 @@ public:
             
             //once profit>0 got, reset
             if(profit>0){
-                mini = prices[i];
+                mini = prices[i];   // mini = INT_MAX will be wrong, e.g, test case [1,2,3,4,5]
                 max_profit =0;
             }           
         }
