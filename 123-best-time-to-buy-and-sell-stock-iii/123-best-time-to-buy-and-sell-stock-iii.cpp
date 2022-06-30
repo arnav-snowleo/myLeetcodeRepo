@@ -36,7 +36,7 @@ public:
             
             after = curr;            
         }        
-        return curr[1][2];
+        return after[1][2];
     }
 };
 
