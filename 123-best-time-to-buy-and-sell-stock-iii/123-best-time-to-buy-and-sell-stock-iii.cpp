@@ -36,7 +36,7 @@ public:
             
             after = curr;            
         }        
-        return after[1][2];
+        return after[1][2];  // retutn curr[1][2] also works
     }
 };
 
