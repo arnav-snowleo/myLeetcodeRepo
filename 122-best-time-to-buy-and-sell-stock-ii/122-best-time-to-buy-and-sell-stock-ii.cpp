@@ -1,4 +1,50 @@
-// TABULATION SOLUTION
+// TABULATION SOLUTION : space optimized
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        int n = prices.size();
+        
+        vector<int> ahead(2,0);
+        vector<int> curr(2,0); 
+        
+        ahead[0] = 0, ahead[1] = 0;
+        
+        for(int index=n-1;index>=0;index--){     //from 0 to n we did in recursive, so, here from n to 0
+ 
+            for(int buy =0;buy<=1;buy++){
+                
+                int profit = 0;
+                
+                if(buy){            
+                    int x = -prices[index] + ahead[0];  //buys          ,can't buy next
+                    int y =                + ahead[1];  //does not buy  ,can buy next  
+            
+                profit = max(x,y);
+            
+                }else{
+                    int x = prices[index] + ahead[1];  //sells          ,can buy next
+                    int y =               + ahead[0];  //does not sell  ,can't buy next 
+            
+                    profit = max(x,y);            
+                }                     
+                curr[buy] = profit;
+            }                     
+            ahead = curr;
+        }
+        return curr[1];
+    }
+};
+
+
+
+
+
+
+
+//Tabulation without space optimization
+/*
 
 class Solution {
 public:
@@ -40,6 +86,7 @@ public:
     }
 };
 
+*/
 
 //RECURSIVE MEMOIZED SOLUTION
 
