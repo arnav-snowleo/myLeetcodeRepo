@@ -4,6 +4,40 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         
+        int n = prices.size(),aheadBuy,aheadNotBuy,currBuy,currNotBuy;
+        
+        aheadNotBuy = 0, aheadBuy = 0;
+        
+        for(int index=n-1;index>=0;index--){     //from 0 to n we did in recursive, so, here from n to 0
+ 
+            // BUY
+            int x = -prices[index] + aheadNotBuy;  //buys          ,can't buy next
+            int y =                + aheadBuy;     //does not buy  ,can buy next  
+            
+            currBuy = max(x,y);
+            
+            // SELL
+            int a = prices[index] + aheadBuy;     //sells          ,can buy next
+            int b =               + aheadNotBuy;  //does not sell  ,can't buy next 
+            
+            currNotBuy = max(a,b);      
+
+            //switch            
+            aheadNotBuy = currNotBuy;
+            aheadBuy = currBuy;
+        }
+        return currBuy;
+    }
+};
+
+
+//SPACE OPTIMIZED WITH CURR, AHEAD VECTORS and not WITHOUT 4 VARIABLES 
+
+/*
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
         int n = prices.size();
         
         vector<int> ahead(2,0);
@@ -36,9 +70,7 @@ public:
         return curr[1];
     }
 };
-
-
-
+*/
 
 
 
