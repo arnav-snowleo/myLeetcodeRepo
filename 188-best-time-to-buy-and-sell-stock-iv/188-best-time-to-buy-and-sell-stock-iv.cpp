@@ -1,38 +1,40 @@
-// MEMOIZED APPROACH: 
+// TABULATION APPROACH: 
 
-class Solution {
-private:
-    int helper(int index, int buy, int cap, vector<int>& prices, vector<vector<vector<int>>> &dp){
-
-        if(index == prices.size() || cap==0) return 0;
-        
-        if(dp[index][buy][cap] != -1) return dp[index][buy][cap];
-        
-        int profit = 0;
-        if(buy){  //allowed to buy only
-            
-            int x = -prices[index] + helper(index+1, 0, cap, prices, dp); //buy 
-            int y =                  helper(index+1, 1, cap, prices, dp); //dint buy
-            
-            profit = max(x,y);
-            
-        }else{    //allowed to sell only
-            
-            int x = prices[index] + helper(index+1, 1, cap-1, prices, dp); //sold
-            int y =                 helper(index+1, 0, cap, prices, dp);   //dint sell
-            
-            profit = max(x,y);
-        }
-        
-        return dp[index][buy][cap] = profit;       
-    }    
+class Solution {   
 public:
     int maxProfit(int k, vector<int>& prices) {
         
         int n = prices.size();
-        vector<vector<vector<int>>> dp(n+1 , vector<vector<int>>(2, vector<int>(k+1,-1)));
+         
+        //base case not req as                                          here initialised 0
+        vector<vector<vector<int>>> dp(n+1 , vector<vector<int>>(2, vector<int>(k+1, 0)));
+
+        // for loops FOR DIFFERENT STATES,  copy recurrence relation inside for loop
+
         
-        return helper(0, 1, k, prices, dp);
-        
+        for(int index = n-1;index>=0;index--){
+            
+            for(int buy =0;buy<2;buy++){
+                
+                for(int cap=1;cap<=k;cap++){  // MISTAKE ALERT : CAP SHOULD START FROM 1, 
+                    
+                    int profit = 0;
+                    
+                    if(buy){
+                        int x = -prices[index] + dp[index+1][0][cap] ; //buy 
+                        int y =                  dp[index+1][1][cap] ; //dint buy
+            
+                        profit = max(x,y);
+                    }else{
+                        int a = prices[index] + dp[index+1][1][cap-1] ; //sold
+                        int b =                 dp[index+1][0][cap] ;   //dint sell
+            
+                        profit = max(a,b);   
+                    }                   
+                    dp[index][buy][cap] = profit;                     
+                }
+            }
+        }        
+        return dp[0][1][k];        
     }
 };
