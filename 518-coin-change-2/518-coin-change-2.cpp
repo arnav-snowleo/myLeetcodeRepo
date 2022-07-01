@@ -1,3 +1,5 @@
+// SPACE OPTIMIZED
+
 // TABULATION APPROACH: bottom up
 
 // dp states
@@ -13,27 +15,30 @@ public:
     int change(int amount, vector<int>& coins) {
         
         int n = coins.size();
-        vector<vector<int>> dp(n, vector<int> (amount+1,0));
+        
+        vector<int> prev(amount+1, 0);
+        vector<int> curr(amount+1, 0);
         
         // if(index==0){
         //     return amount % coins[index] == 0 ;
         // };  
         
         for(int cap=0;cap<=amount;cap++){
-            dp[0][cap] = ( cap % coins[0]==0 );
+            prev[cap] = ( cap % coins[0]==0 );
         }
         
         for(int index =1 ;index<n;index++){
             
             for(int cap=0;cap<=amount;cap++){
                 
-                int not_take = dp[index-1][cap];
+                int not_take = prev[cap];
                 int take = 0;        
-                if(coins[index] <= cap) take = dp[index][cap - coins[index]];               
+                if(coins[index] <= cap) take = curr[cap - coins[index]];               
                 
-                dp[index][cap] = take+not_take;
-            }
+                curr[cap] = take+not_take;
+            }            
+            prev = curr;         //switch
         }        
-        return dp[n-1][amount];     //where you are at after two for loops executed   
+        return prev[amount];     //where you are at after two for loops executed   
     }
 };
