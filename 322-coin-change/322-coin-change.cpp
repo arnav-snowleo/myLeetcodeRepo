@@ -2,19 +2,18 @@
 
 // take, not_take
 // but here, infinite supplies
-// so slight change to take, not_take
+// so slight change to take <can take that again, so index for take not changed>, not_take
 
 class Solution {
 private:
     int helper(int index, int amount, vector<int>& coins, vector<vector<int>> &dp){
-        
-        //BASE CASE
+
         if(amount == 0 ) return 0;
         if(amount<0 || index == coins.size()) return INT_MAX-1;
 
         if(dp[index][amount] != -1) return dp[index][amount];
         
-        int take = INT_MAX-1;
+        int take = INT_MAX;
         if(coins[index] <= amount)  take = 1 + helper(index,amount-coins[index], coins, dp); 
                                                   // (index+1) we didn't do as we can take that again
         
