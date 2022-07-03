@@ -20,7 +20,6 @@ public:
         int maxcol =n-1;
         
         ListNode* temp = head;
-        // if(temp == NULL) return matrix;
         
         //TRAVERSAL
         while(temp!=NULL && minrow<=maxrow && mincol <=maxcol){
@@ -28,7 +27,6 @@ public:
             //TOP WALL
             for(int i=minrow;i<=maxcol;i++){
                 if(temp) matrix[minrow][i] = temp->val;
-                // cout<<temp->val<<" ";
                 if(temp) temp = temp->next;
             }
             minrow++;
@@ -36,7 +34,6 @@ public:
             //RIGHT WALL
             for(int i=minrow;i<=maxrow;i++){
                 if(temp) matrix[i][maxcol] = temp->val;
-                // cout<<temp->val<<" ";
                 if(temp) temp = temp->next;
             }
             maxcol--;
@@ -44,7 +41,6 @@ public:
             //BOTTOM WALL
             for(int i=maxcol;i>=mincol;i--){
                 if(temp) matrix[maxrow][i] = temp->val;
-                // cout<<temp->val<<" ";
                 if(temp) temp = temp->next;
             }
             maxrow--;
@@ -52,7 +48,6 @@ public:
             //LEFT WALL
             for(int i=maxrow;i>=minrow;i--){
                 if(temp) matrix[i][mincol] = temp->val; 
-                // cout<<temp->val<<" ";
                 if(temp) temp = temp->next;
             }
             mincol++;            
