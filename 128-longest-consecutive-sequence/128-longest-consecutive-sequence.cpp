@@ -18,13 +18,9 @@ public:
                 // do nothing
             }
             else{
-                //reset count
-                count = 0;
+                count = 0; //reset count
             }
         }
-        
-        if(maxi== INT_MIN) return count+1; // if no consecutive found, maxi not updated
-        return maxi+1;
-        
+        return maxi== INT_MIN ? count+1 : maxi+1;        
     }
 };
