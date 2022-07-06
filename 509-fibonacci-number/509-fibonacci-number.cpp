@@ -2,18 +2,23 @@ class Solution {
 public:
     int fib(int n) {
         
-        // DP -> TABULATION APPROACH : bottom up
+        // SPACE OPTIMIZING 
        
-        if(n<2) return n;        
-        int dp[n+1];       
+        if(n<2) return n; 
         
-        dp[0]=0;
-        dp[1]=1;
+        // int dp[n+1];     NOT USED ARRAY   
+        
+        int prev2 = 0;
+        int prev = 1;
+
         for(int i=2;i<=n;i++){
-            dp[i] = dp[i-1] + dp[i-2];
+            int curr = prev + prev2 ;
+            
+            
+            prev2 = prev;     // THIS ORDER OF ASSIGNING 
+            prev = curr;      // IS IMPORTANT
         }       
     
-        return dp[n];
-        
+        return prev;        
     }
 };
