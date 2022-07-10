@@ -1,3 +1,5 @@
+// BST ------ THINK OF INORDER TRAVERSAL
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -10,25 +12,31 @@
  * };
  */
 class Solution {
-public:
-    bool isValidHelper(TreeNode* node, long long int start , long long int end){
-
-        if(!node) return true;        
-        if(node->val >=end || node->val <=start) return false; // CHECK IF NODE->VALUE IS IN RANGE
+private:
+    void inorder(vector<int> &arr,TreeNode* node){
         
-        return isValidHelper(node->left , start , node->val)
-            && isValidHelper(node->right , node->val, end);    
-    } 
-    
+        if(!node) return;
+        
+        //INORDER TRAVERSAL
+        
+        inorder(arr, node->left);
+        arr.push_back(node->val);
+        inorder(arr, node->right);
+    }
+public:
     bool isValidBST(TreeNode* root) {
         
-        // case not considered earlier [2,2,2]            -> just equality add  -> silly mistake
+        vector<int> arr;
+        inorder(arr, root);
+        int n = arr.size();
         
-        // also [5,4,6,null,null,3,7] case not considered -> introduce range    -> needed clarity -> do a dry run of sample cases
-
+        for(int i=0;i<n-1;i++){
+            
+            if(arr[i]>=arr[i+1]) return false;
+            
+        }
+        return true;
         
-        // [2147483647]                                    -> INT_MAX & upper range equal -> use LLONG->MAX
-
-        return isValidHelper(root, LLONG_MIN, LLONG_MAX);
+        
     }
-}; 
+};
