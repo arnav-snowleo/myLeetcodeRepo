@@ -24,12 +24,13 @@ public:
             slow = slow->next;
             fast = fast->next->next;
             
-            if(slow == fast){     
-                //loop exists                
+            if(slow == fast){     //loop exists    
+                            
                 while(slow2!=slow){
-                slow2 = slow2->next;
-                slow = slow->next;
+                    slow2 = slow2->next;
+                    slow = slow->next;
                 }
+                
                 return slow2;              
             }
         }
